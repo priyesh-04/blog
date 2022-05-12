@@ -43,7 +43,7 @@
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your username & password to login</p>
+                    <p class="text-center small">Enter your Mobile Number / Email & password to login</p>
                   </div>
 
                   <form method="POST" class="row g-3 needs-validation" id="login_form">
@@ -80,11 +80,10 @@
     e.preventDefault();
     var username = $('#id_query').val();
     var password = $('#id_password').val();
-    console.log(username,'u',password,'pass');
 
     $.ajax({
       type: 'POST',
-      url: "/login/",
+      url: "{% url 'login' %}",
       data: {
         'query':username,
         'password':password,
@@ -97,7 +96,7 @@
          console.log(res.loggedIn,'loggedIn'); 
         }
         else {
-          $("#login_form").before(`<p><strong>${res.error}</strong></p>`);
+          $("#login_form").before(`<p class="error-text"><strong>${res.error}</strong></p>`);
         }
       },
       error: function(err) {
@@ -109,6 +108,12 @@
 
  
 </script>
+
+<style>
+.error-text {
+  color: red;
+}
+</style>
 
 </body>
 </html>

@@ -41,6 +41,7 @@ from accounts.models import MyUser
 def register_view(request, *args, **kwargs):
     form = UserCreationForm()
     context = {}
+    print('hello')
     if request.user.is_authenticated:
         return HttpResponseRedirect("/")
     if request.method == "POST" and request.is_ajax():
@@ -78,7 +79,7 @@ def register_view(request, *args, **kwargs):
             user.set_password(password1)
             user.save()
             context['status'] = 200
-            context['redirect_url'] = '/login/'
+            context['redirect_url'] = '/accounts/login/'
             return JsonResponse(context)
         except:
             pass

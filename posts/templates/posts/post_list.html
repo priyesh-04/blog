@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-	
+
+{% endblock content %}
+
+    
 <!-- Page header with logo and tagline-->
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
@@ -18,7 +21,7 @@
                 <div class="col-lg-8">
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
-						{% for post in post_list %}
+                        {% for post in post_list %}
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
@@ -31,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-						{% endfor %}
+                        {% endfor %}
                     </div>
                     <!-- Pagination-->
                     <nav aria-label="Pagination">
@@ -49,8 +52,7 @@
                 </div>
                
 <style>
-	.card-body {
-		max-height: 400px;
-	}
+    .card-body {
+        max-height: 400px;
+    }
 </style>
-{% endblock content %}

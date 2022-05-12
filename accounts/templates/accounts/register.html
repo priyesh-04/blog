@@ -9,8 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
 </head>
-<body>
-  
     <!-- Vendor CSS Files -->
     <link href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
@@ -22,6 +20,8 @@
   
     <!-- Template Main CSS File -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<body>
+
 <main>
     <div class="container">
 
@@ -85,7 +85,7 @@
 
     $.ajax({
       type: 'POST',
-      url: "/register/",
+      url: "{% url 'register' %}",
       data: {
         'email':email,
         'mobile_number':mobile_number,
@@ -102,16 +102,16 @@
         }
         else {
           if(res.error_email){
-            $("#register_form").before(`<p><strong>${res.error_email}</strong></p>`);
+            $("#register_form").before(`<p class="error-text"><strong>${res.error_email}</strong></p>`);
           }
           if(res.error_mobile_number){
-            $("#register_form").before(`<p><strong>${res.error_mobile_number}</strong></p>`);
+            $("#register_form").before(`<p class="error-text"><strong>${res.error_mobile_number}</strong></p>`);
           }
           if(res.error_username){
-            $("#register_form").before(`<p><strong>${res.error_username}</strong></p>`);
+            $("#register_form").before(`<p class="error-text"><strong>${res.error_username}</strong></p>`);
           }
           if(res.error_password){
-            $("#register_form").before(`<p><strong>${res.error_password}</strong></p>`);
+            $("#register_form").before(`<p class="error-text"><strong>${res.error_password}</strong></p>`);
           }
         }
       },
@@ -124,6 +124,12 @@
 
  
 </script>
+
+<style>
+.error-text {
+  color: red;
+}
+</style>
 
 </body>
 </html>
