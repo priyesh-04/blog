@@ -9,8 +9,8 @@ from accounts.models import MyUser, UserProfile
 
 
 class UserLoginForm(forms.Form):
-    query = forms.CharField(label='Mobile_Number / Email')
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    query = forms.CharField(label='Mobile_Number / Email', widget=forms.TextInput(attrs={'class': "form-control"}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': "form-control"}))
 
     def clean(self, *args, **kwargs):
         query = self.cleaned_data.get("query")
@@ -29,8 +29,11 @@ class UserLoginForm(forms.Form):
 
 
 class UserCreationForm(forms.ModelForm):
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    email = forms.CharField(label='Email', widget=forms.TextInput(attrs={'class': "form-control"}))
+    mobile_number = forms.CharField(label='Mobile Number', widget=forms.TextInput(attrs={'class': "form-control"}))
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': "form-control"}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': "form-control"}))
+    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput(attrs={'class': "form-control"}))
 
     class Meta:
         model = MyUser
